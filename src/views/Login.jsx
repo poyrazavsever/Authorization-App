@@ -22,7 +22,6 @@ function Login() {
   }
 
   useEffect(() => {
-    console.log(user.user)
     if(user.user){
       navigate("/")
     }
