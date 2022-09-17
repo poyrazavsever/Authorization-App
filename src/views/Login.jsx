@@ -1,9 +1,11 @@
-import React from 'react'
-import {useDispatch} from "react-redux"
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from "react-redux"
 import { login } from "../stores/auth"
 import {useNavigate} from "react-router-dom"
 
 function Login() {
+
+  const user = useSelector(state => state.auth)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -18,6 +20,13 @@ function Login() {
     dispatch(login(userData))
     navigate("/")
   }
+
+  useEffect(() => {
+    console.log(user.user)
+    if(user.user){
+      navigate("/")
+    }
+  }, [])
 
   return (
     <div className='w-full h-screen flex justify-center items-center'>

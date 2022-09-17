@@ -9,7 +9,7 @@ export const auth = createSlice({
     reducers :{
         login: (state, action) => {
             localStorage.setItem("auth", action.payload)
-            state.user = action.payload
+            state.user = true
         },
         logout: state => {
             localStorage.removeItem("auth")

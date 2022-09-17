@@ -1,9 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
+import {useSelector} from "react-redux"
+import {useNavigate} from "react-router-dom"
 
 function Register() {
-  return (
-    <div>Register</div>
-  )
+
+    const user = useSelector(state => state.auth)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+      console.log(user.user)
+      if(user.user){
+        navigate("/")
+      }
+    }, [])
+    
+    return (
+      <div>Register</div>
+    )
 }
 
 export default Register
