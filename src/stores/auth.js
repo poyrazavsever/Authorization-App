@@ -4,14 +4,16 @@ export const auth = createSlice({
 
     name:"auth",
     initialState:{
-        user:false,
+        user:localStorage.getItem("auth") ?? false
     },
     reducers :{
         login: (state, action) => {
+            localStorage.setItem("auth", action.payload)
             state.user = action.payload
         },
-        logout: (state) => {
-            state.user = false
+        logout: state => {
+            localStorage.removeItem("auth")
+            state.user = false 
         }
     }
 
